@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Gpio = require('onoff').Gpio;
 
-
 /* GET users listing. */
 router.get('/open', function(req, res, next) {
     const relay = new Gpio(21, 'out');
@@ -14,7 +13,7 @@ router.get('/open', function(req, res, next) {
             console.log('desligando. . .');
             relay.writeSync(Gpio.LOW);
             relay.unexport();
-        }, 500)
+        }, 100)
     }
     res.send({status: 1, message: 'abrindo cancela'});
 });
