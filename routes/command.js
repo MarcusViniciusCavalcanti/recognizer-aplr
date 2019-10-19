@@ -3,11 +3,9 @@ const router = express.Router();
 const Gpio = require('onoff').Gpio;
 
 
-const relay = new Gpio(21, 'in');
-
 /* GET users listing. */
 router.get('/open', function(req, res, next) {
-    console.log('iniciando. . .');
+    const relay = new Gpio(21, 'out');
     if (relay.readSync() === Gpio.LOW) {
         console.log('ligando . . .');
         relay.writeSync(Gpio.HIGH);
@@ -15,7 +13,8 @@ router.get('/open', function(req, res, next) {
         setTimeout(() => {
             console.log('desligando. . .');
             relay.writeSync(Gpio.LOW);
-        }, 2000)
+            relay.unexport();
+        }, 500)
     }
     res.send({status: 1, message: 'abrindo cancela'});
 });
