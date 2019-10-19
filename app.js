@@ -7,12 +7,9 @@ const fs = require('fs');
 const config = JSON.parse(fs.readFileSync('./config.json').toString());
 
 const commands = require('./routes/command');
-
 const app = express();
 
-const ips = config.ipsAllow;
-
-console.log(ips)
+console.log('runngin program, ips allow: ',config.ipsAllow);
 
 app.use(logger('dev'));
 app.use(express.json());
