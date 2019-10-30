@@ -76,7 +76,6 @@ function yellow() {
 	}, 250);
 }
 
-
 function red() {
 	let blink = true;
 	blinkRed = setInterval(() => {
