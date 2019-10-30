@@ -14,7 +14,7 @@ router.get('/open', function(req, res, next) {
             console.log('desligando. . .');
             relay.writeSync(Gpio.LOW);
             relay.unexport();
-        }, 500)
+        }, 100)
     }
     res.send({status: 1, message: 'abrindo cancela'});
 });
